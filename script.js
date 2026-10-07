@@ -91,4 +91,33 @@ form.addEventListener("submit", (event) => {
 
     results.push(randomNumber);
   }
+
+  form.classList.add("hidden");
+  resultsSection.classList.remove("hidden");
+  btnAgain.classList.add("hidden");
+
+  results.forEach((result, index) => {
+    setTimeout(() => {
+      const resultTemplate = document.createElement("div");
+
+      resultTemplate.classList.add("result-value");
+      resultTemplate.textContent = result;
+
+      resultValues.append(resultTemplate);
+
+      if (index === results.length - 1) {
+        resultTemplate.addEventListener(
+          "animationend",
+          () => {
+            btnAgain.classList.remove("hidden");
+          },
+          { once: true }
+        );
+      }
+
+      requestAnimationFrame(() => {
+        resultTemplate.classList.add("show");
+      });
+    }, index * 2000);
+  });
 });
