@@ -20,6 +20,27 @@ function clearError() {
   errorMessage.classList.add("hidden");
   closeButton.classList.add("hidden");
 }
+
+closeButton.addEventListener("click", () => {
+  closeButton.classList.add("hidden");
+  clearError();
+
+  totalNumbersInput.value = "";
+  lowestValueInput.value = "";
+  highestValueInput.value = "";
+
+  numberToggle.checked = false;
+});
+
+btnAgain.addEventListener("click", () => {
+  resultValues.replaceChildren();
+
+  resultsSection.classList.add("hidden");
+  form.classList.remove("hidden");
+
+  btnAgain.classList.add("hidden");
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -80,6 +101,7 @@ form.addEventListener("submit", (event) => {
     showError("A quantidade solicitada é maior que os números disponíveis no intervalo.");
     return;
   }
+
   const results = [];
 
   while (results.length < totalNumber) {
