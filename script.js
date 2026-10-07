@@ -20,3 +20,64 @@ function clearError() {
   errorMessage.classList.add("hidden");
   closeButton.classList.add("hidden");
 }
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  clearError();
+
+  const totalValue = totalNumbersInput.value.trim();
+  if (totalValue === "") {
+    showError("Informe a quantidade de números.");
+    return;
+  }
+
+  const totalNumber = Number(totalValue);
+
+  if (totalNumber <= 0) {
+    showError("A quantidade de números deve ser maior que zero.");
+    return;
+  }
+
+  if (!Number.isInteger(totalNumber)) {
+    showError("A quantidade de números deve ser um valor inteiro.");
+    return;
+  }
+
+  const lowsValue = lowestValueInput.value.trim();
+  if (lowsValue === "") {
+    return;
+  }
+
+  const lowsNumber = Number(lowsValue);
+
+  if (!Number.isInteger(lowsNumber)) {
+    showError("A quantidade de números deve ser um valor inteiro.");
+    return;
+  }
+
+  const highestValue = highestValueInput.value.trim();
+  if (highestValue === "") {
+    return;
+  }
+
+  const highestNumber = Number(highestValue);
+
+  if (!Number.isInteger(highestNumber)) {
+    showError("A quantidade de números deve ser um valor inteiro.");
+    return;
+  }
+
+  if (lowsNumber > highestNumber) {
+    showError("O menor valor não pode ser maior que o maior valor.");
+    return;
+  }
+
+  const noRepeat = numberToggle.checked;
+
+  const availableNumbers = highestNumber - lowsNumber + 1;
+
+  if (noRepeat && totalNumber > availableNumbers) {
+    showError("A quantidade solicitada é maior que os números disponíveis no intervalo.");
+    return;
+  }
+});
