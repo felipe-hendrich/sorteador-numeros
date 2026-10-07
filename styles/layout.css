@@ -88,3 +88,62 @@ header {
 form {
   width: 100%;
 }
+
+.fields {
+  display: flex;
+  gap: 2rem;
+
+  & .input-group {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 5.4rem;
+
+    & label {
+      font: var(--label-sm);
+      text-transform: uppercase;
+      color: var(--content-secondary);
+      text-align: center;
+
+      margin-bottom: 0.5rem;
+    }
+
+    & input {
+      font: var(--display-sm);
+      color: var(--content-primary);
+      background-color: var(--background-secondary);
+
+      border: 1px solid transparent;
+      border-radius: 0.5rem;
+
+      padding: 0.75rem;
+
+      background:
+        linear-gradient(var(--background-secondary), var(--background-secondary)) padding-box,
+        transparent border-box;
+
+      transition: 0.2s ease;
+    }
+
+    & input:hover,
+    & input:focus {
+      outline: none;
+
+      background:
+        linear-gradient(var(--background-tertiary), var(--background-tertiary)) padding-box,
+        var(--gradient-border) border-box;
+    }
+  }
+}
+
+input[type="number"] {
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
