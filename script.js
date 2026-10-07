@@ -80,4 +80,15 @@ form.addEventListener("submit", (event) => {
     showError("A quantidade solicitada é maior que os números disponíveis no intervalo.");
     return;
   }
+  const results = [];
+
+  while (results.length < totalNumber) {
+    const randomNumber = Math.floor(Math.random() * (highestNumber - lowsNumber + 1)) + lowsNumber;
+
+    if (noRepeat && results.includes(randomNumber)) {
+      continue;
+    }
+
+    results.push(randomNumber);
+  }
 });
