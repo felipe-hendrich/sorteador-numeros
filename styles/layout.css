@@ -63,7 +63,7 @@ ul {
 
   & li {
     font: var(--body-md);
-    background: url(/assets/icon-list.svg) no-repeat;
+    background: url(../assets/icon-list.svg) no-repeat;
     padding-left: 1.75rem;
     color: var(--content-brand);
 
